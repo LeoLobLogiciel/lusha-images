@@ -15,21 +15,21 @@ html * {
 .center {
   column-count: 3;
   width: 1200px;
+  margin-left: 20px;
 }
 
 article {
   margin: 40px 10px 10px 10px;
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color:burlywood;
-  color:blue;
 }
 
 article > img {
   background-color: white;
-  border-radius: 10px 10px 0px 0px;
-  width: 250px;
-  height: 250px;
+  border-radius: 10px 10px 10px 10px;
+  width: 300px;
+  height: 300px;
 }
 
 article > p {
@@ -38,4 +38,10 @@ article > p {
 
 article:hover {
   box-shadow: 5px 5px 15px rgb(0,0,0,0.3);
+}
+
+.detail {
+  color: blue;
+  width: 300px;
+  height: 300px;
 }

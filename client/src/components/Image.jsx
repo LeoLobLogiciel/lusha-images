@@ -1,12 +1,20 @@
+import { useState } from "react"
+import ImageDetail from "./ImageDetails"
 
 const Image = ({image}) => {
 
+  const [hover, setHover] =  useState(false)
+
+  
   return (
     <div>
       <article
         key={image.url}
+        onMouseEnter={ () => setHover(true)}
+        onMouseLeave={ () => setHover(false)}
       >
-        <img src={image.url} />
+        {hover ? <ImageDetail image={image} /> : <img src={image.url} />}
+        
       </article>
 
     </div>
