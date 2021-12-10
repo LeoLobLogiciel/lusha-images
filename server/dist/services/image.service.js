@@ -36,17 +36,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getImages_Service = void 0;
+exports.getImagesPaginated_Service = exports.getAllImages_Service = void 0;
 var image_dalc_1 = require("../DALC/image.dalc");
-var getImages_Service = function () { return __awaiter(void 0, void 0, void 0, function () {
+var getAllImages_Service = function () { return __awaiter(void 0, void 0, void 0, function () {
     var response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, image_dalc_1.getImages_DALC)()];
+            case 0: return [4 /*yield*/, (0, image_dalc_1.getAllImages_DALC)()];
             case 1:
                 response = _a.sent();
                 return [2 /*return*/, response];
         }
     });
 }); };
-exports.getImages_Service = getImages_Service;
+exports.getAllImages_Service = getAllImages_Service;
+var getImagesPaginated_Service = function (page, pageSize) { return __awaiter(void 0, void 0, void 0, function () {
+    var response;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, (0, image_dalc_1.getPaginatedImages_DALC)(page, pageSize)];
+            case 1:
+                response = _a.sent();
+                return [2 /*return*/, response];
+        }
+    });
+}); };
+exports.getImagesPaginated_Service = getImagesPaginated_Service;

@@ -1,0 +1,8 @@
+@pathUrl = http://localhost:8080/api
+
+### get all images
+GET {{pathUrl}}/images
+
+
+### get paginated images
+GET {{pathUrl}}/images/3/1

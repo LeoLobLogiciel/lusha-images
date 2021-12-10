@@ -36,18 +36,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getImages_controller = void 0;
+exports.getPaginatedImages_controller = exports.getAllImages_controller = void 0;
 var image_service_1 = require("../services/image.service");
 // Controller: get all images
-var getImages_controller = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var getAllImages_controller = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, image_service_1.getImages_Service)()];
+            case 0: return [4 /*yield*/, (0, image_service_1.getAllImages_Service)()];
             case 1:
                 response = _a.sent();
                 return [2 /*return*/, res.json(require('lsi-util-node/API').getFormatedResponse(response))];
         }
     });
 }); };
-exports.getImages_controller = getImages_controller;
+exports.getAllImages_controller = getAllImages_controller;
+// Controller: get paginatedimages
+var getPaginatedImages_controller = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var response;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                // Validation of parameters logic here
+                if (!req.params.page) {
+                    return [2 /*return*/, res.status(404).json(require("lsi-util-node/API").getFormatedResponse("", 'Missing parameter: page'))];
+                }
+                if (!req.params.pageSize) {
+                    return [2 /*return*/, res.status(404).json(require("lsi-util-node/API").getFormatedResponse("", 'Missing parameter: pageSize'))];
+                }
+                return [4 /*yield*/, (0, image_service_1.getImagesPaginated_Service)(Number(req.params.page), Number(req.params.pageSize))];
+            case 1:
+                response = _a.sent();
+                return [2 /*return*/, res.json(require('lsi-util-node/API').getFormatedResponse(response))];
+        }
+    });
+}); };
+exports.getPaginatedImages_controller = getPaginatedImages_controller;

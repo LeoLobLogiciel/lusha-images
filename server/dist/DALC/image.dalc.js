@@ -39,9 +39,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getImages_DALC = void 0;
+exports.getPaginatedImages_DALC = exports.getAllImages_DALC = void 0;
 var axios_1 = __importDefault(require("axios"));
-var getImages_DALC = function () { return __awaiter(void 0, void 0, void 0, function () {
+var getAllImages_DALC = function () { return __awaiter(void 0, void 0, void 0, function () {
     var headers, response, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -50,19 +50,39 @@ var getImages_DALC = function () { return __awaiter(void 0, void 0, void 0, func
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, (0, axios_1.default)("https://api.jonathanczyzyk.com/api/v1/images/small", { headers: headers })
-                    // const dataReturn = `${response.data.length} images found!`
-                ];
+                return [4 /*yield*/, (0, axios_1.default)('https://api.jonathanczyzyk.com/api/v1/images/small', { headers: headers })];
             case 2:
                 response = _a.sent();
-                // const dataReturn = `${response.data.length} images found!`
                 return [2 /*return*/, response.data];
             case 3:
                 error_1 = _a.sent();
-                console.log(error_1);
                 return [2 /*return*/, "Error: ".concat(error_1)];
             case 4: return [2 /*return*/];
         }
     });
 }); };
-exports.getImages_DALC = getImages_DALC;
+exports.getAllImages_DALC = getAllImages_DALC;
+var getPaginatedImages_DALC = function (page, pageSize) { return __awaiter(void 0, void 0, void 0, function () {
+    var headers, response, paginatedResponse, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                headers = { 'x-api-key': 'api-key-69d6587b-eadb-4902-8076-30e738ec8613' };
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, (0, axios_1.default)('https://api.jonathanczyzyk.com/api/v1/images/small', { headers: headers })];
+            case 2:
+                response = _a.sent();
+                paginatedResponse = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+                paginatedResponse.splice(0, (page - 1) * pageSize);
+                paginatedResponse.splice(pageSize);
+                return [2 /*return*/, paginatedResponse];
+            case 3:
+                error_2 = _a.sent();
+                return [2 /*return*/, "Error: ".concat(error_2)];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+exports.getPaginatedImages_DALC = getPaginatedImages_DALC;
