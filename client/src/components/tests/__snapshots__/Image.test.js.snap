@@ -12,3 +12,7 @@ exports[`Snapshot test 1`] = `
   </article>
 </div>
 `;
+
+exports[`Snapshot test 2`] = `ShallowWrapper {}`;
+
+exports[`Snapshot test 3`] = `ReactWrapper {}`;

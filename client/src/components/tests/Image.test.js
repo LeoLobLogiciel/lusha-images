@@ -18,9 +18,13 @@ test("Snapshot test", () => {
   const component = renderer.create(
     <Image image={mockProps.image} />
   )
-  let tree=component.toJSON()
-  expect(tree).toMatchSnapshot()
+  let componentRendered=component.toJSON()
+  expect(componentRendered).toMatchSnapshot()
 
   const componentShallow = shallow(<Image image={mockProps.image} />)
+  expect(componentShallow).toMatchSnapshot()
+
+  const componentMounted = mount(<Image image={mockProps.image} />)
+  expect(componentMounted).toMatchSnapshot()
 
 })
