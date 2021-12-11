@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import ImageList from './components/ImagesList'
 import getImagesFromAPI from './services/api'
 import Loading from './components/Loading'
+import ErrorMessage from './components/ErrorMessage'
 
 const styles={
   imagesList: {
@@ -19,19 +20,29 @@ function App() {
   const [imagesList, setImagesList] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [showLoading, setShowLoading] = useState(false)
+  const [showErrorMessage, setShowErrorMessage] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
-  useEffect( async () => {    
+  const loadMoreImages = async () => {
+    console.log("Current Page", currentPage)
     setShowLoading(true)
     const response=await getImagesFromAPI(currentPage, pageSize)
-    setImagesList(response)
     setShowLoading(false)
+    if (response.status==="OK") {
+      setImagesList([...imagesList, ...response.data])
+      setShowErrorMessage(false)
+    } else {
+      setErrorMessage("API error on loading images...")
+      setShowErrorMessage(true)
+    }
+  }
+
+  useEffect( async () => {    
+    loadMoreImages()
   }, [])
   
   useEffect( async () => {
-    setShowLoading(true)
-    const response=await getImagesFromAPI(currentPage, pageSize)
-    setImagesList([...imagesList, ...response])
-    setShowLoading(false)
+    loadMoreImages()
   }, [currentPage])
 
 
@@ -42,22 +53,17 @@ function App() {
         setCurrentPage(currentPage+1)
       }
     }
-
   }
 
   return (
     <div 
-      className="App" 
       style={styles.imagesList} 
       onScroll={onScroll}
       ref={listImagesRef}
     >
-      <header className="App-header">
-        <ImageList 
-          imagesList={imagesList}           
-        />
-        { showLoading ? <Loading /> :  null}
-      </header>
+      <ImageList imagesList={imagesList} />
+      { showLoading ? <Loading /> :  null}
+      { showErrorMessage ? <ErrorMessage textError={errorMessage} /> :  null}
     </div>
   );
 }

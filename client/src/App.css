@@ -2,47 +2,49 @@ html {
   background-color: wheat;
 }
 
-html * {
+/* html * {
   box-sizing: inherit;
-}
+} */
 
-.container {
+/* .container {
   display: flex;
   justify-content: center;
   background-color: wheat;
-}
+} */
 
-.center {
+/* .center {
   column-count: 3;
   width: 550px;
   margin-left: 20px;
-}
+} */
 
-article {
+/* article {
   margin: 40px 10px 10px 10px;
   display: inline-block;
   border-radius: 15px;
   background-color:burlywood;
 }
 
-article > img {
-  background-color: white;
-  border-radius: 10px 10px 10px 10px;
-  width: 150px;
-  height: 150px;
-}
-
-article > p {
-  font-size: large;
-}
-
-article:hover {
-  box-shadow: 5px 5px 15px rgb(0,0,0,0.3);
-}
 
 .detail {
   color: blue;
   width: 200px;
   height: 200px;
   border-radius: 15px;
-}
+  } 
+  */
+
+  article > img {
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    width: 150px;
+    height: 150px;
+  }
+  
+  article > p {
+    font-size: large;
+  }
+  
+  article:hover {
+    box-shadow: 5px 5px 15px rgb(0,0,0,0.3);
+  }

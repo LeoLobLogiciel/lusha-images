@@ -7,7 +7,7 @@ const styles={
     paddingLeft: '10px',
     paddingBottom: '10px'
   },
-  container: {
+  containerDetail: {
     display: 'flex',
     flexDirection: 'column-reverse',
     alignContent: 'space-around',
@@ -20,7 +20,7 @@ const styles={
 
 const ImageDetail = ({image}) => {
   return (
-      <div style={styles.container}>
+      <div style={styles.containerDetail}>
         <span style={styles.text}><Like likesCount={image.likes} /></span>  
         <br />
         <span style={styles.text}>{image.description}</span>  
