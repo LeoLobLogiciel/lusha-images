@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material"
 import Like from "./Like"
 
 const styles={
@@ -7,24 +8,19 @@ const styles={
     paddingLeft: '10px',
     paddingBottom: '10px'
   },
-  containerDetail: {
-    display: 'flex',
-    flexDirection: 'column-reverse',
-    alignContent: 'space-around',
-    alignItems: 'flex-start',
-    height: '150px',
-    width: '150px',
-    backgroundColor: 'primary.dark'
-  }
 }
 
 const ImageDetail = ({image}) => {
   return (
-      <div style={styles.containerDetail}>
-        <span style={styles.text}><Like likesCount={image.likes} /></span>  
-        <br />
-        <span style={styles.text}>{image.description}</span>  
-
+      <div className="imageDetail">
+        <Grid container direction={"column"} alignItems={"flex-start"}>
+          {/* <Grid item xs={12}>
+            <span style={styles.text}>{image.description}</span>  
+          </Grid> */}
+          <Grid item xs={12}>
+            <span style={styles.text}><Like likesCount={image.likes} /></span>  
+          </Grid>
+        </Grid>
       </div>
   )
 }

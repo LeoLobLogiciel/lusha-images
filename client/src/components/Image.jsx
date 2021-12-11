@@ -3,7 +3,7 @@ import ImageDetail from "./ImageDetails"
 
 const Image = ({image}) => {
 
-  const [hover, setHover] =  useState(false)
+  const [hover, setHover] =  useState(true)
   
   return (
     <div>
@@ -12,7 +12,6 @@ const Image = ({image}) => {
         onMouseEnter={ () => setHover(true)}
         onMouseLeave={ () => setHover(false)}
       >
-        {image.id}
         {hover ? <ImageDetail image={image} /> : <img src={image.url} />}
         
       </article>

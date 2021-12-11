@@ -4,6 +4,7 @@ import ImageList from './components/ImagesList'
 import getImagesFromAPI from './services/api'
 import Loading from './components/Loading'
 import ErrorMessage from './components/ErrorMessage'
+import { Box, Grid } from '@mui/material';
 
 const styles={
   imagesList: {
@@ -19,7 +20,7 @@ function App() {
 
   const [imagesList, setImagesList] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
-  const [showLoading, setShowLoading] = useState(false)
+  const [showLoading, setShowLoading] = useState(true)
   const [showErrorMessage, setShowErrorMessage] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -27,7 +28,7 @@ function App() {
     console.log("Current Page", currentPage)
     setShowLoading(true)
     const response=await getImagesFromAPI(currentPage, pageSize)
-    setShowLoading(false)
+    // setShowLoading(false)
     if (response.status==="OK") {
       setImagesList([...imagesList, ...response.data])
       setShowErrorMessage(false)
@@ -61,9 +62,19 @@ function App() {
       onScroll={onScroll}
       ref={listImagesRef}
     >
-      <ImageList imagesList={imagesList} />
-      { showLoading ? <Loading /> :  null}
-      { showErrorMessage ? <ErrorMessage textError={errorMessage} /> :  null}
+      <Grid container justifyContent={"center"} >
+        <Grid container xs={6}  >
+          <Grid item>
+            <ImageList imagesList={imagesList} />
+          </Grid>
+          <Grid item>
+            { showErrorMessage ? <ErrorMessage textError={errorMessage} /> :  null}
+          </Grid>
+          <Grid item xs={12}>
+            { showLoading ? <Loading /> :  null}
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 }
