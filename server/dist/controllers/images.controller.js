@@ -51,7 +51,7 @@ var getAllImages_controller = function (req, res) { return __awaiter(void 0, voi
     });
 }); };
 exports.getAllImages_controller = getAllImages_controller;
-// Controller: get paginatedimages
+// Controller: get paginated images
 var getPaginatedImages_controller = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var response;
     return __generator(this, function (_a) {
@@ -59,10 +59,10 @@ var getPaginatedImages_controller = function (req, res) { return __awaiter(void 
             case 0:
                 // Validation of parameters logic here
                 if (!req.params.page) {
-                    return [2 /*return*/, res.status(404).json(require("lsi-util-node/API").getFormatedResponse("", 'Missing parameter: page'))];
+                    return [2 /*return*/, res.status(404).json(require('lsi-util-node/API').getFormatedResponse('', 'Missing parameter: page'))];
                 }
                 if (!req.params.pageSize) {
-                    return [2 /*return*/, res.status(404).json(require("lsi-util-node/API").getFormatedResponse("", 'Missing parameter: pageSize'))];
+                    return [2 /*return*/, res.status(404).json(require('lsi-util-node/API').getFormatedResponse('', 'Missing parameter: pageSize'))];
                 }
                 return [4 /*yield*/, (0, image_service_1.getImagesPaginated_Service)(Number(req.params.page), Number(req.params.pageSize))];
             case 1:

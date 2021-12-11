@@ -12,8 +12,7 @@ const Image = ({image}) => {
         onMouseEnter={ () => setHover(true)}
         onMouseLeave={ () => setHover(false)}
       >
-        {hover ? <ImageDetail image={image} /> : <img src={image.url} />}
-        
+        {hover ? <ImageDetail image={image} /> : <img src={image.url} />}        
       </article>
 
     </div>

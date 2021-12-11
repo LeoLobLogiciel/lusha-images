@@ -80,7 +80,6 @@ var getPaginatedImages_DALC = function (page, pageSize) { return __awaiter(void 
                     index++;
                     unaImagen.id = index;
                 }
-                // let response={data: Array.from({length: 100}, (v,k)=>k+1)}
                 //Remove the previous and the last images
                 response.data.splice(0, (page - 1) * pageSize);
                 response.data.splice(pageSize);

@@ -1,7 +1,4 @@
-import { Request, Response } from 'express'
-import { getPaginatedImages_controller } from '../controllers/images.controller'
 import { getAllImages_DALC, getPaginatedImages_DALC } from "../DALC/image.dalc"
-
 
 export const getAllImages_Service = async (): Promise <any> => {
 
@@ -17,5 +14,4 @@ export const getImagesPaginated_Service = async (page: number, pageSize: number)
   
   const response = await getPaginatedImages_DALC(page, pageSize)
   return response
-
 }

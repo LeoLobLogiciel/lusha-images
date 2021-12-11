@@ -32,26 +32,25 @@ function App() {
     if (response.status==="OK") {
       setImagesList([...imagesList, ...response.data])
       setShowErrorMessage(false)
+      setCurrentPage(currentPage+1)
     } else {
       setErrorMessage("API error on loading images...")
       setShowErrorMessage(true)
     }
   }
-
-  useEffect( async () => {    
+ 
+  useEffect( () => {
     loadMoreImages()
   }, [])
-  
-  useEffect( async () => {
-    loadMoreImages()
-  }, [currentPage])
 
 
-  const onScroll = () => {
+  const onScroll = async () => {
     if (listImagesRef.current) {
       const {scrollTop, scrollHeight, clientHeight} = listImagesRef.current
-      if (scrollTop + clientHeight == scrollHeight) {
-        setCurrentPage(currentPage+1)
+      if (scrollTop + clientHeight === scrollHeight) {
+        if (!showLoading) {
+          await loadMoreImages()
+        }
       }
     }
   }
@@ -63,7 +62,7 @@ function App() {
       ref={listImagesRef}
     >
       <Grid container justifyContent={"center"} >
-        <Grid container xs={6}  >
+        <Grid container xs={6}>
           <Grid item>
             <ImageList imagesList={imagesList} />
           </Grid>

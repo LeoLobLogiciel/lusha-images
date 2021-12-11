@@ -13,12 +13,14 @@ const styles={
 const ImageDetail = ({image}) => {
   return (
       <div className="imageDetail">
-          <Stack
-          >
+        <Grid container xs={12}>
+          <Grid item>
             <span style={styles.text}><Like likesCount={image.likes} /></span>
+          </Grid>
+          <Grid item>
             <span style={styles.text}>{image.description}</span>              
-          </Stack>
-
+          </Grid>
+        </Grid>
       </div>
   )
 }
