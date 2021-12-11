@@ -20,15 +20,15 @@ function App() {
 
   const [imagesList, setImagesList] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
-  const [showLoading, setShowLoading] = useState(true)
+  const [showLoading, setShowLoading] = useState(false)
   const [showErrorMessage, setShowErrorMessage] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
   const loadMoreImages = async () => {
-    console.log("Current Page", currentPage)
+    // console.log("Current Page", currentPage)
     setShowLoading(true)
     const response=await getImagesFromAPI(currentPage, pageSize)
-    // setShowLoading(false)
+    setShowLoading(false)
     if (response.status==="OK") {
       setImagesList([...imagesList, ...response.data])
       setShowErrorMessage(false)

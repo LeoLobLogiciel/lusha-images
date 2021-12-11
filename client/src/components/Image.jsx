@@ -3,7 +3,7 @@ import ImageDetail from "./ImageDetails"
 
 const Image = ({image}) => {
 
-  const [hover, setHover] =  useState(true)
+  const [hover, setHover] =  useState(false)
   
   return (
     <div>

@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material"
+import { Grid, Stack } from "@mui/material"
 import Like from "./Like"
 
 const styles={
@@ -6,21 +6,19 @@ const styles={
     color: 'white',
     fontSize: 'small',
     paddingLeft: '10px',
-    paddingBottom: '10px'
+    paddingBottom: '10px',
   },
 }
 
 const ImageDetail = ({image}) => {
   return (
       <div className="imageDetail">
-        <Grid container direction={"column"} alignItems={"flex-start"}>
-          {/* <Grid item xs={12}>
-            <span style={styles.text}>{image.description}</span>  
-          </Grid> */}
-          <Grid item xs={12}>
-            <span style={styles.text}><Like likesCount={image.likes} /></span>  
-          </Grid>
-        </Grid>
+          <Stack
+          >
+            <span style={styles.text}><Like likesCount={image.likes} /></span>
+            <span style={styles.text}>{image.description}</span>              
+          </Stack>
+
       </div>
   )
 }

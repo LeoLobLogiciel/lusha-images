@@ -8,7 +8,9 @@ const ImagesList = ({imagesList}) => {
       <div className="center">
         <Grid container spacing={1}>
           {imagesList.map ( e => 
-              <Grid item xs={12} sm={6} md={4} key={e.id}><Image image={e} /></Grid>
+              <Grid item xs={12} sm={6} md={4} key={e.id}>
+                <Image image={e} />
+              </Grid>
           )}
         </Grid>
       </div>
