@@ -71,10 +71,12 @@ var getPaginatedImages_DALC = function (page, pageSize) { return __awaiter(void 
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, (0, axios_1.default)('https://api.jonathanczyzyk.com/api/v1/images/small', { headers: headers })];
+                return [4 /*yield*/, (0, axios_1.default)('https://api.jonathanczyzyk.com/api/v1/images/small', { headers: headers })
+                    // let paginatedResponse=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+                ];
             case 2:
                 response = _a.sent();
-                paginatedResponse = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+                paginatedResponse = response.data;
                 paginatedResponse.splice(0, (page - 1) * pageSize);
                 paginatedResponse.splice(pageSize);
                 return [2 /*return*/, paginatedResponse];

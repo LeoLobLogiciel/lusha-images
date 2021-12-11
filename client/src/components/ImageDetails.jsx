@@ -11,8 +11,8 @@ const ImageDetail = ({image}) => {
   return (
     <Box 
       sx={{
-        width: 300,
-        height: 300,      
+        width: 200,
+        height: 200,      
         backgroundColor: 'primary.dark',
         '&:hover': {
           backgroundColor: 'primary.main',
