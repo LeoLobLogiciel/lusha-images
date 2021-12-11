@@ -13,7 +13,7 @@ const styles={
 const ImageDetail = ({image}) => {
   return (
       <div className="imageDetail">
-        <Grid container xs={12}>
+        <Grid container xs={12} direction={"column-reverse"} justifyItems={"flex-start"} >
           <Grid item>
             <span style={styles.text}><Like likesCount={image.likes} /></span>
           </Grid>
