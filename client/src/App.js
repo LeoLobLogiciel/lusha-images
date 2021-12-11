@@ -1,38 +1,62 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ImageList from './components/ImagesList'
 import getImagesFromAPI from './services/api'
+import Loading from './components/Loading'
+
+const styles={
+  imagesList: {
+    height: '700px',
+    overflowY: "scroll"
+  }
+}
 
 function App() {
 
-  const pageSize=3
+  const pageSize=15
+  const listImagesRef=useRef()
 
   const [imagesList, setImagesList] = useState([])
-  const [currentPage, setCurrentPage] =  useState(1)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [showLoading, setShowLoading] = useState(false)
 
-  useEffect( async () => {
+  useEffect( async () => {    
+    setShowLoading(true)
     const response=await getImagesFromAPI(currentPage, pageSize)
     setImagesList(response)
-
+    setShowLoading(false)
   }, [])
-
+  
   useEffect( async () => {
+    setShowLoading(true)
     const response=await getImagesFromAPI(currentPage, pageSize)
-    console.log(response)
     setImagesList([...imagesList, ...response])
-    console.log(imagesList)
+    setShowLoading(false)
   }, [currentPage])
 
 
-  const handleClickMorePages = () => {
-    setCurrentPage(currentPage+1)
+  const onScroll = () => {
+    if (listImagesRef.current) {
+      const {scrollTop, scrollHeight, clientHeight} = listImagesRef.current
+      if (scrollTop + clientHeight == scrollHeight) {
+        setCurrentPage(currentPage+1)
+      }
+    }
+
   }
 
   return (
-    <div className="App">
+    <div 
+      className="App" 
+      style={styles.imagesList} 
+      onScroll={onScroll}
+      ref={listImagesRef}
+    >
       <header className="App-header">
-        <p>{imagesList.length===0 ? 'Loading...' : <ImageList imagesList={imagesList}/>}</p>
-        <button onClick={ () => handleClickMorePages()}>Otra página</button>
+        <ImageList 
+          imagesList={imagesList}           
+        />
+        { showLoading ? <Loading /> :  null}
       </header>
     </div>
   );
